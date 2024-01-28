@@ -40,22 +40,16 @@ while True:
     frame_count += 1
     # Calculate and display FPS
     elapsed_time = time.time() - start_time
-    if elapsed_time >= 10.5:
-        fps_calculated = frame_count / elapsed_time
-        print(fps_calculated)
-        break
-    #frame = cv2.putText(frame, fps_text, org_fps, font, font_scale, (255, 255, 255), thickness, cv2.LINE_AA)
+    fps_calculated = frame_count / elapsed_time
+    fps_text = f'FPS: {fps_calculated:.2f}'
+    frame = cv2.putText(frame, fps_text, org_fps, font, font_scale, (255, 255, 255), thickness, cv2.LINE_AA)
     
     cv2.imshow('Camera Stream', frame)
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
+
 cap.release()
 
-'''
-Input: image
-output: label
-Calculate inference time with 1 image 
-'''
 # import time
 # start_time = time.time() # Multiply by 1000 to get milliseconds
 
@@ -67,7 +61,7 @@ Calculate inference time with 1 image
 # end_time = time.time()
 # execution_time = end_time - start_time
 # print(f"Execution time: {execution_time:.10f}seconds")
-# frame = cv2.putText(frame, label, org_label, font, font_scale, font_color[label], thickness, cv2.LINE_AA)
+# frame = cv2.putText(frame, label, org, font, font_scale, font_color[label], thickness, cv2.LINE_AA)
 # cv2.imshow('Camera Stream', frame)
 # cv2.waitKey(0)
 

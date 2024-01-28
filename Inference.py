@@ -1,6 +1,3 @@
-import time
-start_time = time.time()  # Multiply by 1000 to get milliseconds
-
 import torch
 import torch.nn.functional as F
 from Param import DEVICE
@@ -52,10 +49,3 @@ def Inference(model,img,threshold=0.5):
         return label[predicted_class]
     except:
         return label[0]
-    
-#time.sleep(0.1)
-
-end_time = time.time()
-execution_time = end_time - start_time
-
-print(f"Execution time: {execution_time:.10f}seconds")
