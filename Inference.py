@@ -3,7 +3,7 @@ import torch.nn.functional as F
 from Param import DEVICE
 from MediapipeFaceMesh import get_landmark_from_image
 
-def Inference(model,img,threshold=0.5):
+def Inference(model,img,threshold=0.55):
     """
     Perform inference using a deep learning model on facial landmarks.
 

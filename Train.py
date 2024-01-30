@@ -64,7 +64,7 @@ args = parser.parse_args()
 print(args)
 def Save_Perform():
     global performance
-    df = pd.DataFrame(performance, columns=['Loss Train', 'Loss Test', 'F1 Train','F1 Test'])
+    df = pd.DataFrame(performance, columns=['Loss Train', 'Loss Test', 'Accuracy Train','Accuracy Test'])
     df.to_csv('Performance.csv',index=False)
 
 if args.save_csv != "":
