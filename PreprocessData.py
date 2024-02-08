@@ -49,10 +49,10 @@ def PreData(p):# Define the path to your dataset folder
     df.to_csv(csv_filename, index=False)
 
 PreData("train")
-PreData("test")
+PreData("validate")
 print("Prepare all data to csv done")
 
-def PreprocessData(save_directory, train_data, test_data, train_file_name='Data/train.npz', test_file_name='Data/test.npz'):
+def PreprocessData(save_directory, train_data, validate_data, train_file_name='Data/train.npz', validate_file_name='Data/validate.npz'):
     """
     Preprocess data, remove null rows, and save it to .npz files.
 
@@ -77,28 +77,28 @@ def PreprocessData(save_directory, train_data, test_data, train_file_name='Data/
 
     # Check for null rows
     null_rows_train = is_row_all_zero_except_label(train_data)
-    null_rows_test = is_row_all_zero_except_label(test_data)
+    null_rows_validate = is_row_all_zero_except_label(validate_data)
 
     # Remove null rows and reset the index
     train_data = train_data[~null_rows_train].reset_index(drop=True)
-    test_data = test_data[~null_rows_test].reset_index(drop=True)
+    validate_data = validate_data[~null_rows_validate].reset_index(drop=True)
 
     # Specify the file paths for the DataFrames
     combined_data_train_path = os.path.join(save_directory, train_file_name)
-    combined_data_test_path = os.path.join(save_directory, test_file_name)
+    combined_data_validate_path = os.path.join(save_directory, validate_file_name)
 
     # Save.npz file
     np.savez(combined_data_train_path, landmarks=train_data.iloc[:, :-1], labels=train_data.iloc[:, -1])
-    np.savez(combined_data_test_path, landmarks=test_data.iloc[:, :-1], labels=test_data.iloc[:, -1])
+    np.savez(combined_data_validate_path, landmarks=validate_data.iloc[:, :-1], labels=validate_data.iloc[:, -1])
 
 save_directory = ""
 
 # Load the data from the .csv files into DataFrames
 PreparedData_train = pd.read_csv('Data/PreparedData_train.csv')
-PreparedData_test = pd.read_csv('Data/PreparedData_test.csv')
+PreparedData_validate = pd.read_csv('Data/PreparedData_validate.csv')
 
 #Call_func:
-PreprocessData(save_directory, PreparedData_train, PreparedData_test)
+PreprocessData(save_directory, PreparedData_train, PreparedData_validate)
 
 
 

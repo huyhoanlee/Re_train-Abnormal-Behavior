@@ -9,8 +9,8 @@ import os
 model = torch.load("model/Weight").to(DEVICE)
 count = 0
 # Specify the image path directly
-directory_path_abnormal = 'Data/SplitData/test/Abnormal'
-directory_path_normal = 'Data/SplitData/test/Normal'
+directory_path_abnormal = 'TEST_DATA/Abnormal'
+directory_path_normal = 'TEST_DATA/Normal'
 #'Data/SplitData/test/Abnormal'
 abnormal_count= 0
 normal_count = 0 
@@ -40,7 +40,7 @@ for filename in os.listdir(directory_path_abnormal):
 for filename in os.listdir(directory_path_normal):
     image_path = os.path.join(directory_path_normal, filename)
 
-    # frame = cv2.imread(image_path)
+    #frame = cv2.imread(image_path)
     label = Inference(model, image_path)
 
     if label == "Normal":

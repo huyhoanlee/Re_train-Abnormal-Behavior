@@ -5,7 +5,7 @@ import shutil
 origin_dir = "Data" 
 split_data_dir ="Data/SplitData"
 train_dir = os.path.join(split_data_dir, "train")
-test_dir = os.path.join(split_data_dir, "test")
+test_dir = os.path.join(split_data_dir, "validate")
 
 os.makedirs(train_dir, exist_ok=True)
 os.makedirs(test_dir, exist_ok=True)

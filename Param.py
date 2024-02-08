@@ -3,7 +3,7 @@ Contain parameters to easily tuning
 """
 import torch
 PATH_TRAIN = "Data/train.npz"
-PATH_TEST = "Data/test.npz"
+PATH_TEST = "Data/validate.npz"
 LEARNING_RATE= 0.0001
 EPOCHS=100
 BATCH_SIZE=64
